@@ -52,4 +52,30 @@ const login = async () => {
     }
 }
 
+const strongPassword = async () => {
+    const password = document.querySelector("#password").value
+    
+    try {
+        const response = await fetch('api/Password', {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(password)
+
+        })
+        if (!response.ok)
+            throw new Error("error in password")
+        else {
+            alert("Dsds")
+            const result = await response.json()
+            document.querySelector("#progress").value = result
+        }
+    }
+        catch (error) {
+            alert(error.message)
+        }
+    
+}
+
                                                                                      
