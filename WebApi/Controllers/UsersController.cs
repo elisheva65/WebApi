@@ -34,7 +34,8 @@ using (StreamReader reader = System.IO.File.OpenText(filePath))
             }
             return NotFound();    
         }
-        string filePath = "file.txt";
+        //fix: The path never changes, so it can be readonly
+        readonly string filePath = "file.txt";
         // POST api/<Users>
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
@@ -48,6 +49,7 @@ using (StreamReader reader = System.IO.File.OpenText(filePath))
             user);
         }
 
+        //The assignment asks a wrong login to return NoContent() (204)
         [HttpPost("login")]
         public ActionResult<User> Post([FromBody] UserLogin loginUser)
         {
@@ -69,6 +71,7 @@ using (StreamReader reader = System.IO.File.OpenText(filePath))
 
         // PUT api/<Users>/5
         [HttpPut("{id}")]
+        //The assignment asks PUT to return Ok(): change void to IActionResult and return Ok() at the end
         public void Put(int id, [FromBody] User updateUser)
         {
         
@@ -81,11 +84,17 @@ using (StreamReader reader = System.IO.File.OpenText(filePath))
                     User user =
                     JsonSerializer.Deserialize<User>(currentUserInFile);
                     if (user.id == id)
+                    {
                         textToReplace = currentUserInFile;
+                        //fix: Found- break
+                        break;
+                    }
                 }
             }
             if(textToReplace != string.Empty)
 {
+                //fix: Keep the id, otherwise the updated user is saved without it
+                updateUser.id = id;
                 string text = System.IO.File.ReadAllText(filePath);
                 text = text.Replace(textToReplace,
                 JsonSerializer.Serialize(updateUser));
