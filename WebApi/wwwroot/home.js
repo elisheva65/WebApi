@@ -26,8 +26,8 @@ const addUserToServer = async () => {
 }
 const login = async () => {
 
-    const password = document.querySelector("#password").value
-    const email = document.querySelector("#email").value
+    const password = document.querySelector("#password2").value
+    const email = document.querySelector("#email2").value
     const userLogin = { email: email, password: password }
     try {
         const response = await fetch('api/Users/login', {
@@ -69,7 +69,7 @@ const strongPassword = async () => {
         else {
             alert("Dsds")
             const result = await response.json()
-            document.querySelector("#progress").value = result
+            document.querySelector("#progress").value = result.score
         }
     }
         catch (error) {

@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApi
+namespace Entity
 {
     public class User
     {
         [EmailAddress]
         public  string email { get; set; }
-        public  int password { get; set; }
+        public  string password { get; set; }
         public  string name { get; set; }
         public  string lastName { get; set; }
         
