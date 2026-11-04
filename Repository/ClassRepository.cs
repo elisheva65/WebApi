@@ -3,9 +3,9 @@ using System.Text.Json;
 
 namespace Repository
 {
-    public class ClassRepository
+    public class ClassRepository : IClassRepository
     {
-        
+
         public User AddUser(User user)
         {
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
@@ -17,7 +17,7 @@ namespace Repository
             return user;
         }
 
-        public User login( UserLogin loginUser)
+        public User login(UserLogin loginUser)
         {
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
 
@@ -37,7 +37,8 @@ namespace Repository
 
         }
 
-        public void UpdateUser(int id, User updateUser) {
+        public void UpdateUser(int id, User updateUser)
+        {
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
             string textToReplace = string.Empty;
             using (StreamReader reader = System.IO.File.OpenText(filePath))

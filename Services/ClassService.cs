@@ -3,9 +3,15 @@ using Entity;
 
 namespace Services
 {
-    public class ClassService
+    public class ClassService : IClassService
     {
-        ClassRepository repository=new ClassRepository();
+        IClassRepository repository;
+
+        public ClassService(IClassRepository repository)
+        {
+            this.repository = repository;
+        }
+
         public User AddUser(User user)
         {
             return repository.AddUser(user);

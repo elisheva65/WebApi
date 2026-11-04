@@ -11,7 +11,7 @@ namespace WebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        ClassService classService= new ClassService();
+        IClassService classService;
         // GET: api/<Users>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -29,6 +29,12 @@ namespace WebApi.Controllers
             return Ok(user);
         }
         string filePath = "file.txt";
+
+        public UsersController(IClassService _classService)
+        {
+            classService = _classService;
+        }
+
         // POST api/<Users>
         [HttpPost]
         public ActionResult<User> Post([FromBody] User user)
