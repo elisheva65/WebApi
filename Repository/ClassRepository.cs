@@ -6,6 +6,7 @@ namespace Repository
     public class ClassRepository : IClassRepository
     {
 
+        //A full path on your disk (M:) only works on your computer: use a path relative to the project instead
         public User AddUser(User user)
         {
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
@@ -17,6 +18,7 @@ namespace Repository
             return user;
         }
 
+        //In C#, method names are PascalCase: Login
         public User login(UserLogin loginUser)
         {
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
