@@ -47,6 +47,7 @@ namespace WebApi.Controllers
         public ActionResult<User> Post([FromBody] UserLogin loginUser)
         {
             var user =classService.login(loginUser);
+            //The assignment asks a login with a wrong password to return 204 NoContent: what does this return when the login fails?
             if (user == null)
                 return NotFound();
             return Ok(user);
