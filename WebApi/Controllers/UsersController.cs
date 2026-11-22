@@ -37,6 +37,7 @@ namespace WebApi.Controllers
 
         // POST api/<Users>
         [HttpPost]
+        //Question: the assignment asks a weak password (score below 3) to return 400. Where should the strength check go, and how does this controller get the password service?
         public ActionResult<User> Post([FromBody] User user)
         {
            user= classService.AddUser(user);
@@ -46,6 +47,7 @@ namespace WebApi.Controllers
         [HttpPost("login")]
         public ActionResult<User> Post([FromBody] UserLogin loginUser)
         {
+            //The assignment asks a wrong password to return 204 NoContent: what should be returned instead of NotFound when the login fails?
             var user =classService.login(loginUser);
             if (user == null)
                 return NotFound();
@@ -55,6 +57,7 @@ namespace WebApi.Controllers
 
         // PUT api/<Users>/5
         [HttpPut("{id}")]
+        //Question: the assignment asks a weak password (score below 3) to return 400. Where is the strength check done before the user is updated?
         public ActionResult Put(int id, [FromBody] User updateUser)
         {
             classService.UpdateUser(id, updateUser);
