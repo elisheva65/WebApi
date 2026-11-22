@@ -8,6 +8,7 @@ namespace Repository
 
         public User AddUser(User user)
         {
+            //This full path only exists on your computer: use a path relative to the project, so the project runs on another computer. Where should file.txt be?
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
             int numberOfUsers = System.IO.File.ReadLines(filePath).Count();
             user.id = numberOfUsers + 1;
@@ -19,6 +20,7 @@ namespace Repository
 
         public User login(UserLogin loginUser)
         {
+            //This full path only exists on your computer: use a path relative to the project, so the project runs on another computer. Where should file.txt be?
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
 
             using (StreamReader reader = System.IO.File.OpenText(filePath))
@@ -39,6 +41,7 @@ namespace Repository
 
         public void UpdateUser(int id, User updateUser)
         {
+            //This full path only exists on your computer: use a path relative to the project, so the project runs on another computer. Where should file.txt be?
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
             string textToReplace = string.Empty;
             using (StreamReader reader = System.IO.File.OpenText(filePath))
@@ -63,6 +66,7 @@ namespace Repository
 
         public User GetById(int id)
         {
+            //This full path only exists on your computer: use a path relative to the project, so the project runs on another computer. Where should file.txt be?
             string filePath = "M:\\API\\WebApi\\Repository\\file.txt";
 
 
